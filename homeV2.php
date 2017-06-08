@@ -13,10 +13,49 @@
 
     </head>
     <body>
+<!--///***********player button-->
+    <div>
+
+<!--        //text表格-->
+        player1:<input type="text" id="number1" class ="number" value="4" placeholder="球衣號碼">
+<!--        //text的確認紐-->
+        <button type="button" id="confirm1" class ="confirm" value="confirm" >confirm</button>
+                    <span>No.</span><span></span>
+<!--                    //後面顯示的號碼-->
+                    <span class="player" id="player1" name="player1" value="4">4</span><br>
+        player2:<input type="text" id="number2" class ="number" value="" placeholder="球衣號碼">
+        <button type="button" id="confirm2" class ="confirm" value="confirm" >confirm</button>
+        <span>No.</span><span></span>
+        <span class="player" id="player1" name="player1" value="5">5</span><br>
+
+<script>
+
+    //修改預設號碼
+                $("button.confirm").click(changeNum);
+
+    var textNum =  $(".number").val();
+                alert(textNum);
+    function al() {
+        alert('123');
+    }
+    function changeNum() {
+
+        var textNum =  $(".number").val();
+        $("#player1").text(textNum);
+//        $("#confirm").hide();
+//        $("#number").attr("disabled","true");
+    }
+
+</script>
 
 
 
+<!--        <input type="button" class="player" id="player1" name="player1" value="1">-->
+<!--        <input type="button" class = "player" id="player2" name="player2" value="2">-->
+<!--
     <!--**********SVG-->
+
+    </div>
         <div id="court" class="court" >
             <svg width="100%" height="100%" id="svg" class="svg">
 
@@ -90,12 +129,29 @@
         </div>
 
 
-
-
         <script>
-        ///****取得xy並用window open 送到後端
+
+
+
+
+            ///選擇球員後可點擊球場紀錄投籃位置
+            $(".player").click(function () {
+                var p = $(this).attr("value");
+//                alert(p);
+                shoot(p);
+            });
+
+//    var player = $("#player2").attr();
+//    alert(player);
+
+//    $("#player1").click(shoot());
+//    $("#player2").click(shoot());
+
+            ///****取得xy並用window open 送到後端
+
+        function shoot(player) {
             $("#court").click(function(event) {
-                var player = 1;
+
                 var cx = event.clientX;
                 var cy = event.clientY;
                 var sx = event.screenX;
@@ -117,26 +173,28 @@
 //                alert(mx+','+my);
 
                 $.get("updateDB.php",{p:player, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy}
-                    );
+                );
             });
 
 
 
 
-        $(document).ready(reload());
 
-        function reload() {
-            window.setInterval(reReadTable, 500);
         }
 
-        function reReadTable() {
-            $.get("showTable.php", function (data, status) {
-                if(status == 'success'){
-                    $("#table").html(data);
-                }
-            })
-        }
+            $(document).ready(reload());
 
+            function reload() {
+                window.setInterval(reReadTable, 500);
+            }
+
+            function reReadTable() {
+                $.get("showTable.php", function (data, status) {
+                    if(status == 'success'){
+                        $("#table").html(data);
+                    }
+                })
+            }
 
         </script>
     </body>

@@ -18,7 +18,7 @@ if(isset($_REQUEST['x'])){
 
 
 
-    $sql = 'INSERT INTO bsk (player,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety) VALUES (?,?,?,?,?,?,?,?,?)';
+    $sql = 'INSERT INTO bsk (playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety) VALUES (?,?,?,?,?,?,?,?,?)';
     $stmt = $PDO->prepare($sql);
     $stmt->execute([$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy]);
 
