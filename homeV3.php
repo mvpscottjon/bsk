@@ -154,7 +154,7 @@
                 <line x1="50%" y1="0" x2="50%" y2="100%" style="stroke:black;stroke-width:3" />
 
                 //half circle 255 48 48
-                <circle cx="50%" cy="50%" r="70" stroke="black" stroke-width="3" fill="rgb(255, 48, 48)" />
+                <circle cx="50%" cy="50%" r="70" stroke="black" stroke-width="3" fill="rgb(150, 48, 48)" />
 
                 //centeral line
 <!--                <line x1="0%" y1="50%" x2="100%" y2="50%" style="stroke:red;stroke-width:2" />-->
@@ -170,7 +170,7 @@
                 <line x1="0" y1="50" x2="80" y2="50" style="stroke:black;stroke-width:3" />
 
                 //power zone
-                <rect x="0" y="220" width="250" height="155" style="fill:rgb(255, 48, 48);stroke-width:3;stroke:black" />
+                <rect x="0" y="220" width="250" height="155" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
 
                 // power zone  line draw
 <!--                        //up-->
@@ -185,7 +185,7 @@
                 ///**********************
                 //power zone oppo
 
-                <rect x="950" y="220" width="250" height="155" style="fill:rgb(255, 48, 48);stroke-width:3;stroke:black" />
+                <rect x="950" y="220" width="250" height="155" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
 
                 // power zone oppo line draw
 <!--                        //up-->
@@ -226,7 +226,6 @@
 //            });
 
             //dbl click
-var DELAY = 700, clicks = 0, timer = null;
 
 
 
@@ -238,20 +237,89 @@ var DELAY = 700, clicks = 0, timer = null;
 
                 var playernum = $(this).val();
 //                alert(playernum);
-
+                var imgPrint = "./img/bsk2.png";
                 shoot(playernum);
             });
 
             ///****取得xy並用window open 送到後端
 
-        function shoot(playernum) {
+        function shoot() {
+
+            var playernum = playernum;
+            var timer = 0;
+            var delay = 200;
+            var prevent = false;
+
+            $("#court")
+                .on("click", function(event) {
+                    timer = setTimeout(function() {
+                        if (!prevent) {
+                            var p = playernum;
+                            var cx = event.clientX;
+                            var cy = event.clientY;
+                            var sx = event.screenX;
+                            var sy = event.screenY;
+                            var ox = event.offsetX;
+                            var oy = event.offsetY;
+                            var mx = ox;
+                            var my = oy;
+                           var imgPrint = "./img/bsk2.png";
+//                            var madeormiss = 0;
+                            var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + '> </image></svg>';
+                            $("#svg").append(cross);
+                            //將參數送到後端與資料庫
 
 
 
-            
-            
+                            $(document).ready(insertDB());
 
-            $("#court").click(function(event) {
+                            function insertDB() {
+                                window.setTimeout(toDB, 1000);
+                            }
+                            function toDB() {
+                                $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy});
+                                alert('123');
+                            }
+
+
+
+
+
+                        }
+                        prevent = false;
+
+                    }, delay);
+
+                })
+                .on("dblclick", function() {
+                    clearTimeout(timer);
+                    prevent = true;
+                    var imgPrint = "./img/x.png";
+                    var p = playernum;
+                    var cx = event.clientX;
+                    var cy = event.clientY;
+                    var sx = event.screenX;
+                    var sy = event.screenY;
+                    var ox = event.offsetX;
+                    var oy = event.offsetY;
+                    var mx = ox;
+                    var my = oy;
+//                    var madeormiss = 0;
+                    var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + '> </image></svg>';
+                    $("#svg").append(cross);
+                    $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy});
+
+                });
+
+        }
+
+
+
+
+
+
+
+            function getAndDraw() {
                 var p = playernum;
                 var cx = event.clientX;
                 var cy = event.clientY;
@@ -261,26 +329,20 @@ var DELAY = 700, clicks = 0, timer = null;
                 var oy = event.offsetY;
 
 
-                var mx =  ox;
-                var my =  oy;
-                var mxR = mx+5;
-                var mxL = mx-5;
-                var myR = my+2000
-                var myL = my-2000
+                var mx = ox;
+                var my = oy;
+                var mxR = mx + 5;
+                var mxL = mx - 5;
+                var myR = my + 200;
+                var myL = my - 200;
+               var imgPrint = imageGet;
 
-                var imgPrint = "./img/bsk2.png";
 
-//                if ($()){
-//                    var imgPrint = "./img/bsk2.png";
-//
-//                }else {
-//                    var imgPrint = "./img/x.png";
-//                }
 //                依據取得XY 畫圓
-                var circle = '<svg><circle cx=' + '\"'+ mx +'\"' + ' '+    'cy=' +'\"'+my +'\"' + 'r="10" stroke="black" stroke-width="3" fill="black" /></svg>';
-                var crossLine = '<svg><line x1=' + '\"'+ mxR +'\"'+' '+ 'y1="' + my + '\"' + ' ' +  'x2="' + mxL +'\"'+ ' ' + 'y2="'+ my + '\"' +' ' + 'style="stroke:rgb(255,0,0);stroke-width:5" /></svg>';
-                var ball =  '<svg><image x="200" y="200" width="20px" height="20px" xlink:href="./img/bsk2.png"> </image></svg>';
-                var cross =  '<svg><image x="'+ mx+'\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint +'\"' + '> </image></svg>';
+                var circle = '<svg><circle cx=' + '\"' + mx + '\"' + ' ' + 'cy=' + '\"' + my + '\"' + 'r="10" stroke="black" stroke-width="3" fill="black" /></svg>';
+                var crossLine = '<svg><line x1=' + '\"' + mxR + '\"' + ' ' + 'y1="' + my + '\"' + ' ' + 'x2="' + mxL + '\"' + ' ' + 'y2="' + my + '\"' + ' ' + 'style="stroke:rgb(255,0,0);stroke-width:5" /></svg>';
+                var ball = '<svg><image x="200" y="200" width="20px" height="20px" xlink:href="./img/bsk2.png"> </image></svg>';
+                var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + '> </image></svg>';
 
 //                $("#svg").append(circle);
 //                $("#svg").append(crossLine);
@@ -288,15 +350,17 @@ var DELAY = 700, clicks = 0, timer = null;
 
 
 //                將參數送到後端與資料庫
-                $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy}
+                $.get("updateDB.php", {p: p, x: mx, y: my, cx: cx, cy: cy, sx: sx, sy: sy, ox: ox, oy: oy}
                 );
-            });
+            }
+
+
+//            $("#court").click(function(event) {
+//
+//        }
 
 
 
-
-
-        }
             //即時抓取資料庫TABLE  設0.5秒抓一次
             $(document).ready(reload());
 
@@ -312,9 +376,7 @@ var DELAY = 700, clicks = 0, timer = null;
                 })
             }
 
-            function al() {
-                alert('123');
-            }
+
         </script>
     </body>
 
