@@ -19,64 +19,17 @@
     <input type = "button" id = "bt1" class="button" value = "click1">
     <input type = "button" id = "bt2" class="button" value = "click2">
     <svg width="4in" height="3in" version="1.1"
-         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<!--    <image x="100" y="100" width="500px" height="500px" xlink:href="./img/bsk.jpg">-->
-<!--        <image x="10" y="10" width="50" height="50" xlink:href="./img/images.png"></image>-->
+        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="123">
 
-        <image x="200" y="200" width="100px" height="100px" xlink:href="./img/bsk.jpg"> </image>
-<!--        x="the x-axis top-left corner of the image"-->
-<!--        y="the y-axis top-left corner of the image"-->
-<!--        width="the width of the image". Required.-->
-<!--        height="the height of the image". Required.-->
-<!--        xlink:href="the path to the image". Required.-->
-<!---->
-<!--        + presentation attributes:-->
-<!--        Color, Graphics, Images, Viewports-->
-</svg>
+        <image x="200" y="200" width="100px" height="100px" xlink:href="./img/bsk.jpg" class="img" id="123" onclick="YOO()"> </image>
+
 
 <script>
 
-
-//    $(document).bind( "click", function (event) {
-//        alert('1');
-//    });
-//        $(document).bind( "dblclick", function (event) {
-//            alert('2');
-//        });
-//
-
-
-
-var DELAY = 300, clicks = 0, timer = null;
-
-$(function(){
-
-    $(document).on("click", function(e){
-
-        clicks++;  //count clicks
-
-        if(clicks === 1) {
-
-            timer = setTimeout(function() {
-
-                alert("Single Click");  //perform single-click action
-                clicks = 0;             //after action performed, reset counter
-
-            }, DELAY);
-
-        } else {
-
-            clearTimeout(timer);    //prevent single-click action
-            alert("Double Click");  //perform double-click action
-            clicks = 0;             //after action performed, reset counter
-        }
-
-    })
-        .on("dblclick", function(e){
-            e.preventDefault();  //cancel system double-click event
-        });
-
+$("#bt2").click(function(){
+    $("#123").empty();
 });
+
 
 
 </script>

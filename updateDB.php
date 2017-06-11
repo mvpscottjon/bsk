@@ -14,15 +14,13 @@ if(isset($_REQUEST['x'])){
     $sy = $_REQUEST['sy'];
     $ox = $_REQUEST['ox'];
     $oy = $_REQUEST['oy'];
-
-
-
+    $mm = $_REQUEST['mm'];
 //    $sql2 = 'INSERT INTO bsk (playernumber,mx) VALUES (??)';
 
 
-    $sql = 'INSERT INTO bsk (playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety) VALUES (?,?,?,?,?,?,?,?,?)';
+    $sql = 'INSERT INTO bsk (playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss) VALUES (?,?,?,?,?,?,?,?,?,?)';
     $stmt = $PDO->prepare($sql);
-    $stmt->execute([$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy]);
+    $stmt->execute([$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm]);
 
 //    echo $mx;
 

@@ -3,6 +3,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -22,53 +23,12 @@
     </head>
     <body>
 <!--///***********player button-->
-    <div>
 
-<!--        //號碼表格-->
-        player1:<input type="text" id="number1" class ="number"  name = "number1" value="4" placeholder="球衣號碼">
-<!--       //選擇球員按鈕-->
-        <button type="button" id="chooseplayer1" class ="player" name = "playernum1" value="4" >choose this player</button>
-        <br>
-        player2:<input type="text" id="number2" class ="number" name = "number2" value="5" placeholder="球衣號碼">
 
-        <button type="button" id="chooseplayer2" class ="player" name = "playernum2" value="5" >choose this player</button>
-        <br>
-        player3:<input type="text" id="number3" class ="number" name = "number3" value="6" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer3" class ="player" name = "playernum3" value="c6" >choose this player</button>
-        <br>
-        player4:<input type="text" id="number4" class ="number" name = "number4" value="7" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer4" class ="player" name = "playernum4" value="7" >choose this player</button>
-        <br>
-        player5:<input type="text" id="number5" class ="number" name = "number5" value="8" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer5" class ="player" name = "playernum5" value="8" >choose this player</button>
-        <br>
-        player6:<input type="text" id="number6" class ="number" name = "number6" value="9" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer6" class ="player" name = "playernum6" value="9" >choose this player</button>
-        <br>
-        player7:<input type="text" id="number7" class ="number" name = "number7" value="10" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer7" class ="player" name = "playernum7" value="10" >choose this player</button>
-        <br>
-        player8:<input type="text" id="number8" class ="number" name = "number8" value="11" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer8" class ="player" name = "playernum8" value="11" >choose this player</button>
-        <br>
-        player9:<input type="text" id="number9" class ="number" name = "number9" value="12" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer9" class ="player" name = "playernum9" value="12" >choose this player</button>
-        <br>
-        player10:<input type="text" id="number10" class ="number" name = "number10" value="13" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer10" class ="player" name = "playernum10" value="13" >choose this player</button>
-        <br>
-        player11:<input type="text" id="number11" class ="number" name = "number11" value="14" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer11" class ="player" name = "playernum11" value="14" >choose this player</button>
-        <br>
-        player12:<input type="text" id="number12" class ="number" name = "number12" value="15" placeholder="球衣號碼">
-        <button type="button" id="chooseplayer12" class ="player" name = "playernum12" value="15" >choose this player</button>
-        <br>
-        <button type="button" id="confirm" class ="confirm" value="confirm" >confirm</button>
-        <br>
+<div style="margin-bottom:50px"></div>
         <div>
-            <select name = "bucket">
-                <option value="0">Made</option>
-                <option  value="1">Miss</option>
+            <select id="CP" class="w3-select" name="option" style="background-color: lightcoral; border-color:green; width: 100px">
+
             </select>
         </div>
         <br>
@@ -79,19 +39,42 @@
         </div>
         <script>
             //讀取球員號碼資料庫
-            $(document).ready(reloadPlayer());
+            $(document).ready(showPlayer());
 
-            function reloadPlayer() {
-                window.setInterval(showPlayer, 500);
-            }
+//            function reloadPlayer() {
+//                window.setInterval(showPlayer, 500);
+//            }
 
 
             function showPlayer() {
-                $.get("showPlayer.php", function(data,status){
-                    if (status == "success"){
-                        $("#playerFromDb").html(data)
-                    }
+//                $.get("showPlayer.php", function(data,status){
+//                    if (status == "success"){
+//                       alert(data)
+//                    }
+//                });
+
+
+                $.getJSON( "showPlayer.php", function(json) {
+
+
+                    $("#CP").append('<option value="' + json.player1 + '\"'+ '>playe1' + '</option>');
+                    $("#CP").append('<option value="' + json.player2 + '\"'+ '>playe2' + '</option>');
+                    $("#CP").append('<option value="' + json.player3 + '\"'+ '>playe3' + '</option>');
+                    $("#CP").append('<option value="' + json.player4 + '\"'+ '>playe4' + '</option>');
+                    $("#CP").append('<option value="' + json.player5 + '\"'+ '>playe5' + '</option>');
+                    $("#CP").append('<option value="' + json.player6 + '\"'+ '>playe6' + '</option>');
+                    $("#CP").append('<option value="' + json.player7 + '\"'+ '>playe7' + '</option>');
+                    $("#CP").append('<option value="' + json.player8 + '\"'+ '>playe8' + '</option>');
+                    $("#CP").append('<option value="' + json.player9 + '\"'+ '>playe9' + '</option>');
+                    $("#CP").append('<option value="' + json.player10 + '\"'+ '>playe10' + '</option>');
+                    $("#CP").append('<option value="' + json.player11 + '\"'+ '>playe11' + '</option>');
+                    $("#CP").append('<option value="' + json.player12 + '\"'+ '>playe12' + '</option>');
+
+
+
                 });
+
+
             }
 
 
@@ -218,41 +201,50 @@
 
 
         <script>
-//            $("#court").dblclick(function () {
-//                var playernum = $(this).val();
-//                var imgPrint = "./img/x.png";
-//                shoot(playernum, imgPrint);
 //
-//            });
-
-            //dbl click
-
 
 
 
 //            /選擇球員後可點擊球場紀錄投籃位置
-            $(".player").click(function () {
 
-//                $.get("getChooseNumber.php",)
 
-                var playernum = $(this).val();
-//                alert(playernum);
-                var imgPrint = "./img/bsk2.png";
-                shoot(playernum);
-            });
+$("#CP").on('change', function (e) {
+    $(".svgImg").remove();
+
+    var p = $( "#CP option:selected" ).val();
+    var url = "drawOld.php?playernum=" + p;
+
+    $.getJSON(url, function(data){
+
+        $.each(data, function (key, val) {
+           var drawX = val.getx;
+           var drawY = val.gety;
+           var imgDraw = val.madeormiss;
+           if (imgDraw ==1){
+               imgDraw = "./img/bsk2.png";
+
+           }else {imgDraw = "./img/x.png";
+           }
+
+            var cross = '<svg><image x="' + drawX + '\"' + ' ' + 'y="' + drawY + ' ' + '" width="20px" height="20px" xlink:href="' + imgDraw + '\"' + 'class = "svgImg"' +'> </image></svg>';
+
+            $("#svg").append(cross);
+        });
+    });
+});
+
 
             ///****取得xy並用window open 送到後端
-function shoot(playernum){
-    var delay = 200;
-    var prevent = false;
-    $("#court")
+shoot();
+function shoot(){
+            var delay = 200;
+            var prevent = false;
+            $("#court")
                 .on("click", function(event) {
                     timer = setTimeout(function() {
                         if (!prevent) {
 
-
-
-                            var p = playernum;
+                            var p = $( "#CP option:selected" ).val();
                             var cx = event.clientX;
                             var cy = event.clientY;
                             var sx = event.screenX;
@@ -263,12 +255,12 @@ function shoot(playernum){
                             var my = oy*1.0;
                             var mm = '1';
                            var imgPrint = "./img/bsk2.png";
-                            var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + '> </image></svg>';
+                            var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + 'class = "svgImg"' +'> </image></svg>';
                             $("#svg").append(cross);
                             //將參數送到後端與資料庫
-                                alert(mm);
 
-;
+
+
                                 $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
 
 
@@ -286,8 +278,9 @@ function shoot(playernum){
                 .on("dblclick", function() {
                     clearTimeout(timer);
                     prevent = true;
+                    var p = $( "#CP option:selected" ).val();
                     var imgPrint = "./img/x.png";
-                    var p = playernum;
+
                     var cx = event.clientX;
                     var cy = event.clientY;
                     var sx = event.screenX;
@@ -298,7 +291,7 @@ function shoot(playernum){
                     var my = oy;
 
                     var mm = 0;
-                    var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + '> </image></svg>';
+                    var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + 'class = "svgImg"' +'> </image></svg>';
                     $("#svg").append(cross);
                     $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
 
