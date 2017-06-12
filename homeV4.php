@@ -47,12 +47,6 @@
 
 
             function showPlayer() {
-//                $.get("showPlayer.php", function(data,status){
-//                    if (status == "success"){
-//                       alert(data)
-//                    }
-//                });
-
 
                 $.getJSON( "showPlayer.php", function(json) {
 
@@ -70,8 +64,6 @@
                     $("#CP").append('<option value="' + json.player11 + '\"'+ '>playe11' + '</option>');
                     $("#CP").append('<option value="' + json.player12 + '\"'+ '>playe12' + '</option>');
 
-
-
                 });
 
 
@@ -79,43 +71,43 @@
 
 
     //修改預設號碼
-                $("button.confirm").click(savePlayers);
-
-
-                function savePlayers() {
-                    //1.confirm
-                    //2.change text
-                    //3.hide button
-                    //4.can't type text
-                    //5.saveplayer to db
-                    var number1 = $("#number1").val();
-                    var number2 = $("#number2").val();
-                    var number3 = $("#number3").val();
-                    var number4 = $("#number4").val();
-                    var number5 = $("#number5").val();
-                    var number6 = $("#number6").val();
-                    var number7 = $("#number7").val();
-                    var number8 = $("#number8").val();
-                    var number9 = $("#number9").val();
-                    var number10 = $("#number10").val();
-                    var number11 = $("#number11").val();
-                    var number12 = $("#number12").val();
-
-
-                $.get("getNumber.php", {number1:number1, number2:number2, number3:number3, number4:number4,number5:number5,
-                    number6:number6, number7:number7, number8:number8,number9:number9,number10:number10, number11:number11,
-                    number12:number12});
-
-                    changeNum();
-                }
-
-    function changeNum() {
-
-        var textNum =  $(".number").val();
-        $(this).text(textNum);
-        $("button.confirm").hide();
-        $(".number").attr("disabled","true");
-    }
+//                $("button.confirm").click(savePlayers);
+//
+//
+//                function savePlayers() {
+//                    //1.confirm
+//                    //2.change text
+//                    //3.hide button
+//                    //4.can't type text
+//                    //5.saveplayer to db
+//                    var number1 = $("#number1").val();
+//                    var number2 = $("#number2").val();
+//                    var number3 = $("#number3").val();
+//                    var number4 = $("#number4").val();
+//                    var number5 = $("#number5").val();
+//                    var number6 = $("#number6").val();
+//                    var number7 = $("#number7").val();
+//                    var number8 = $("#number8").val();
+//                    var number9 = $("#number9").val();
+//                    var number10 = $("#number10").val();
+//                    var number11 = $("#number11").val();
+//                    var number12 = $("#number12").val();
+//
+//
+//                $.get("getNumber.php", {number1:number1, number2:number2, number3:number3, number4:number4,number5:number5,
+//                    number6:number6, number7:number7, number8:number8,number9:number9,number10:number10, number11:number11,
+//                    number12:number12});
+//
+//                    changeNum();
+//                }
+//
+//    function changeNum() {
+//
+//        var textNum =  $(".number").val();
+//        $(this).text(textNum);
+//        $("button.confirm").hide();
+//        $(".number").attr("disabled","true");
+//    }
 
 </script>
 
@@ -207,12 +199,12 @@
 
 //            /選擇球員後可點擊球場紀錄投籃位置
 
-
+//change player event
 $("#CP").on('change', function (e) {
     $(".svgImg").remove();
 
-    var p = $( "#CP option:selected" ).val();
-    var url = "drawOld.php?playernum=" + p;
+    var pOld = $("#CP option:selected").val();
+    var url = "insertPlayer.php?pOld=" + pOld;
 
     $.getJSON(url, function(data){
 
@@ -261,7 +253,7 @@ function shoot(){
 
 
 
-                                $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
+                                $.get("insertPlayer.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
 
 
 
@@ -293,7 +285,7 @@ function shoot(){
                     var mm = 0;
                     var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + 'class = "svgImg"' +'> </image></svg>';
                     $("#svg").append(cross);
-                    $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
+                    $.get("insertPlayer.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
 
                 });
 
@@ -336,8 +328,8 @@ function shoot(){
 
 
 //                將參數送到後端與資料庫
-                $.get("updateDB.php", {p: p, x: mx, y: my, cx: cx, cy: cy, sx: sx, sy: sy, ox: ox, oy: oy}
-                );
+//                $.get("updateDB.php", {p: p, x: mx, y: my, cx: cx, cy: cy, sx: sx, sy: sy, ox: ox, oy: oy}
+//                );
             }
 
 

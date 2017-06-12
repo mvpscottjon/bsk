@@ -1,11 +1,22 @@
 <?php
-
+//**********no use
 
 include 'sqlPdo3.php';
 $PDO= new PDO($dsn,$username,$passwd,$options);
 
 
-$sql = 'SELECT * FROM playernumber WHERE game = 1 ORDER by id DESC  limit 10 ';
+//$sql = 'SELECT * FROM bskgame ORDER by createtime DESC  limit 1 ';
+//$stmt = $PDO->prepare($sql);
+//$stmt->execute();
+//
+//$obj = $stmt->fetchObject();
+//
+//$gid = $obj->gid;
+//var_dump($gid);
+
+
+//gameid = gid
+$sql = 'SELECT * FROM playernumber WHERE gid = 3 ORDER by id DESC  limit 10 ';
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
 
@@ -25,8 +36,10 @@ $stmt->execute();
 //echo   "<th>Player11</th>";
 //echo   "<th>Player12</th>";
 
-
+//
 $val = $stmt->fetchObject();
+
+
 $json = json_encode($val);
 
 echo $json;
