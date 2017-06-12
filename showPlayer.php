@@ -1,9 +1,13 @@
 <?php
 //**********no use
-
+session_start();
 include 'sqlPdo3.php';
 $PDO= new PDO($dsn,$username,$passwd,$options);
 
+if ($_SESSION['gid'] ){
+    $gid = $_SESSION['gid'];
+
+}
 
 //$sql = 'SELECT * FROM bskgame ORDER by createtime DESC  limit 1 ';
 //$stmt = $PDO->prepare($sql);
@@ -16,7 +20,7 @@ $PDO= new PDO($dsn,$username,$passwd,$options);
 
 
 //gameid = gid
-$sql = 'SELECT * FROM playernumber WHERE gid = 3 ORDER by id DESC  limit 10 ';
+$sql = "SELECT * FROM playernumber WHERE gid = $gid ORDER by id DESC  limit 10 ";
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
 

@@ -1,6 +1,7 @@
 <?php
 
 include 'sqlPdo3.php';
+session_start();
 $PDO= new PDO($dsn,$username,$passwd,$options);
 
 
@@ -37,7 +38,7 @@ $gid = $obj->gid;
 
 //echo "$gid<br>";
 
-
+$_SESSION['gid'] = $gid;
 
 
 
