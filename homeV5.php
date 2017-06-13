@@ -15,128 +15,117 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style>
         body{
-            background-image: url("./img/back4.jpg");
+            background-image: url("./img/hm3.jpg");
             height: 100%;
 
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: auto;
             background-attachment: fixed;
 
             opacity: 0.95;
         }
       div.court {
-          display: block;
+          /*display: block;*/
           margin: auto;
+            margin-top: 0px;
           text-align:center;
           width: 1200px;
           height: 600px;
+          /*border: dotted;*/
+          /*float: right;*/
       }
+
+
+
+        /*.lb{*/
+            /*position: relative;*/
+            /*margin-top: 0px;*/
+            /*!*float: left;*!*/
+        /*}*/
+        /*.chs{*/
+            /*position: relative;*/
+            /*margin-top: 0px;*/
+            /*float: left;*/
+            /*!*width: 100%;*!*/
+            /*border: dashed;*/
+        /*}*/
+
+        .container-fluid{
+            /*border: dashed;*/
+
+        }
+
+
+
+        .col-md-2{
+            position: relative;
+            /*border: solid;*/
+            height: 150px;
+            margin: 0px 0px 0px 170px;
+            padding-top: 50px;
+
+        }
+
+        .col-md-7{
+            /*border: double;*/
+            /*width: 500px;*/
+            /*float: right;*/
+            height: 150px;
+            margin: 0px 200px 0px 0px;
+
+        }
+
+        table{
+            position: relative;
+            width: 800px;
+            height: 120px;
+            border: solid;
+            margin: 15px 0 0 30px;
+            font-size: large;
+            text-align: center
+
+        }
+
+
+
+        table, th, td {
+            border: 1px solid black;
+            color: black;
+            background-color: whitesmoke;
+            text-align: center
+        }
 
 
     </style>
 
     </head>
+
+
     <body>
 <!--///***********player button-->
 
 
-<!--<div style="margin-bottom:50px"></div>-->
-        <div class="cs-select cs-skin-rotate">
-            <label>Choose Player</label>
-            <br>
-            <select id="CP" class="cs-select cs-skin-rotate" name="option" ">
 
-            </select>
+<div class="container-fluid"  >
+    <div class="row" >
+        <div class="col-md-2 col-md-offset-2">
+
+                <label style="font-size: 16px; color: #ac2925" >Choose Player:</label>
+
+                <select id="CP" class="cs-select cs-skin-rotate" name="option" ">
+
+                </select>
+
         </div>
-        <br>
+<!--        <label class="lb" >play by play</label>-->
+         <div id="table" class="col-md-7 ">
 
+        </div>
+    </div>
 
-
-
-        <script>
-            //讀取球員號碼資料庫
-            $(document).ready(showPlayer());
-
-//            function reloadPlayer() {
-//                window.setInterval(showPlayer, 500);
-//            }
-
-
-            function showPlayer() {
-
-                $.getJSON( "showPlayer.php", function(json) {
-
-
-                    $("#CP").append('<option value="' + json.player1 + '\"'+ '>playe1' + '</option>');
-                    $("#CP").append('<option value="' + json.player2 + '\"'+ '>playe2' + '</option>');
-                    $("#CP").append('<option value="' + json.player3 + '\"'+ '>playe3' + '</option>');
-                    $("#CP").append('<option value="' + json.player4 + '\"'+ '>playe4' + '</option>');
-                    $("#CP").append('<option value="' + json.player5 + '\"'+ '>playe5' + '</option>');
-                    $("#CP").append('<option value="' + json.player6 + '\"'+ '>playe6' + '</option>');
-                    $("#CP").append('<option value="' + json.player7 + '\"'+ '>playe7' + '</option>');
-                    $("#CP").append('<option value="' + json.player8 + '\"'+ '>playe8' + '</option>');
-                    $("#CP").append('<option value="' + json.player9 + '\"'+ '>playe9' + '</option>');
-                    $("#CP").append('<option value="' + json.player10 + '\"'+ '>playe10' + '</option>');
-                    $("#CP").append('<option value="' + json.player11 + '\"'+ '>playe11' + '</option>');
-                    $("#CP").append('<option value="' + json.player12 + '\"'+ '>playe12' + '</option>');
-
-                });
-
-
-            }
-
-
-    //修改預設號碼
-//                $("button.confirm").click(savePlayers);
-//
-//
-//                function savePlayers() {
-//                    //1.confirm
-//                    //2.change text
-//                    //3.hide button
-//                    //4.can't type text
-//                    //5.saveplayer to db
-//                    var number1 = $("#number1").val();
-//                    var number2 = $("#number2").val();
-//                    var number3 = $("#number3").val();
-//                    var number4 = $("#number4").val();
-//                    var number5 = $("#number5").val();
-//                    var number6 = $("#number6").val();
-//                    var number7 = $("#number7").val();
-//                    var number8 = $("#number8").val();
-//                    var number9 = $("#number9").val();
-//                    var number10 = $("#number10").val();
-//                    var number11 = $("#number11").val();
-//                    var number12 = $("#number12").val();
-//
-//
-//                $.get("getNumber.php", {number1:number1, number2:number2, number3:number3, number4:number4,number5:number5,
-//                    number6:number6, number7:number7, number8:number8,number9:number9,number10:number10, number11:number11,
-//                    number12:number12});
-//
-//                    changeNum();
-//                }
-//
-//    function changeNum() {
-//
-//        var textNum =  $(".number").val();
-//        $(this).text(textNum);
-//        $("button.confirm").hide();
-//        $(".number").attr("disabled","true");
-//    }
-
-</script>
-
-
-
-<!--        <input type="button" class="player" id="player1" name="player1" value="1">-->
-<!--        <input type="button" class = "player" id="player2" name="player2" value="2">-->
-<!--
-    <!--**********SVG-->
-
-
-        <div id="court" class="court" >
+    <div class="row" >
+        <div id="court" class="court " >
             <svg width="100%" height="100%" id="svg" class="svg">
 
                 //bord line 255 215 0
@@ -149,29 +138,29 @@
                 <circle cx="50%" cy="50%" r="70" stroke="black" stroke-width="3" fill="rgb(150, 48, 48)" />
 
                 //centeral line
-<!--                <line x1="0%" y1="50%" x2="100%" y2="50%" style="stroke:red;stroke-width:2" />-->
-                <line x1="600" y1="0" x2="600" y2="600" style="stroke:black;stroke-width:2" />
+                <!--                <line x1="0%" y1="50%" x2="100%" y2="50%" style="stroke:red;stroke-width:2" />-->
+                <line x1="600" y1="0" x2="600" y2="600" style="stroke:black;stroke-width:4" />
 
                 //three point curve
                 <path d="M80 540 C 550 540, 500 50, 80 50" stroke="black"  stroke-width="3" fill="transparent"/>
 
                 //three point curve to baseline
-                        //bottom
+                //bottom
                 <line x1="0" y1="540" x2="80" y2="540" style="stroke:black;stroke-width:3" />
-                        //up
+                //up
                 <line x1="0" y1="50" x2="80" y2="50" style="stroke:black;stroke-width:3" />
 
                 //power zone
                 <rect x="0" y="220" width="250" height="155" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
 
                 // power zone  line draw
-<!--                        //up-->
-<!--                <line x1="0" y1="220" x2="250" y2="220" style="stroke:black;stroke-width:3" />-->
-<!--                        //bottom-->
-<!--                <line x1="0" y1="375" x2="250" y2="375" style="stroke:black;stroke-width:3" />-->
-<!--                        /vertical-->
-<!--                <line x1="250" y1="220" x2="250" y2="375" style="stroke:black;stroke-width:3" />-->
-                        //one point line half circle
+                <!--                        //up-->
+                <!--                <line x1="0" y1="220" x2="250" y2="220" style="stroke:black;stroke-width:3" />-->
+                <!--                        //bottom-->
+                <!--                <line x1="0" y1="375" x2="250" y2="375" style="stroke:black;stroke-width:3" />-->
+                <!--                        /vertical-->
+                <!--                <line x1="250" y1="220" x2="250" y2="375" style="stroke:black;stroke-width:3" />-->
+                //one point line half circle
                 <path d="M250 375 C 375 375, 375 220, 250 220" stroke="black"  stroke-width="3" fill="transparent"/>
 
                 ///**********************
@@ -180,13 +169,13 @@
                 <rect x="950" y="220" width="250" height="155" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
 
                 // power zone oppo line draw
-<!--                        //up-->
-<!--                <line x1="950" y1="220" x2="1200" y2="220" style="stroke:black;stroke-width:3" />-->
-<!--                        //bottom oppo-->
-<!--                <line x1="950" y1="375" x2="1200" y2="375" style="stroke:black;stroke-width:3" />-->
-<!--                        //vertical oppo-->
-<!--                <line x1="950" y1="220" x2="950" y2="375" style="stroke:black;stroke-width:3" />-->
-                         //one point line half circle oppo
+                <!--                        //up-->
+                <!--                <line x1="950" y1="220" x2="1200" y2="220" style="stroke:black;stroke-width:3" />-->
+                <!--                        //bottom oppo-->
+                <!--                <line x1="950" y1="375" x2="1200" y2="375" style="stroke:black;stroke-width:3" />-->
+                <!--                        //vertical oppo-->
+                <!--                <line x1="950" y1="220" x2="950" y2="375" style="stroke:black;stroke-width:3" />-->
+                //one point line half circle oppo
                 <path d="M950 375 C 825 375, 825 220, 950 220" stroke="black"  stroke-width="3" fill="transparent"/>
 
                 //three point curve oppo
@@ -202,17 +191,45 @@
             </svg>
         </div>
 
+    </div>
+
+</div>
+    <!--**********SVG-->
+<div id="divbutton" style="text-align:center;">
+    <button type="button" class="btn btn-danger"><a href="./template/index.html">Leave</a></button>
+
+</div>
 
 
-        <div id="table" style="margin-top: 100px">
-
-        </div>
 
 
         <script>
-//
+
+//讀取球員號碼資料庫
+$(document).ready(showPlayer());
+
+function showPlayer() {
+
+    $.getJSON( "showPlayer.php", function(json) {
 
 
+        $("#CP").append('<option value="' + json.player1 + '\"'+ '>player1' +':'+ 'No.'+json.player1 +  '</option>');
+        $("#CP").append('<option value="' + json.player2 + '\"'+ '>player2' +':'+ 'No.'+json.player2 +  '</option>');
+        $("#CP").append('<option value="' + json.player3 + '\"'+ '>player3' +':'+ 'No.'+json.player3 +  '</option>');
+        $("#CP").append('<option value="' + json.player4 + '\"'+ '>player4' +':'+ 'No.'+json.player4 +  '</option>');
+        $("#CP").append('<option value="' + json.player5 + '\"'+ '>player5' +':'+ 'No.'+json.player5 +  '</option>');
+        $("#CP").append('<option value="' + json.player6 + '\"'+ '>player6' +':'+ 'No.'+json.player6 +  '</option>');
+        $("#CP").append('<option value="' + json.player7 + '\"'+ '>player7' +':'+ 'No.'+json.player7 +  '</option>');
+        $("#CP").append('<option value="' + json.player8 + '\"'+ '>player8' +':'+ 'No.'+json.player8 +  '</option>');
+        $("#CP").append('<option value="' + json.player9 + '\"'+ '>player9' +':'+ 'No.'+json.player9 +  '</option>');
+        $("#CP").append('<option value="' + json.player10 + '\"'+ '>player10' +':'+ 'No.'+json.player10 +  '</option>');
+        $("#CP").append('<option value="' + json.player11 + '\"'+ '>player11' +':'+ 'No.'+json.player11 +  '</option>');
+        $("#CP").append('<option value="' + json.player12 + '\"'+ '>player12' +':'+ 'No.'+json.player12 +  '</option>');
+
+    });
+
+
+}
 
 //            /選擇球員後可點擊球場紀錄投籃位置
 
@@ -244,8 +261,8 @@ $("#CP").on('change', function (e) {
 
 
             ///****取得xy並用window open 送到後端
-shoot();
-function shoot(){
+        shoot();
+            function shoot(){
             var delay = 200;
             var prevent = false;
             $("#court")

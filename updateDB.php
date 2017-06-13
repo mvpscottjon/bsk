@@ -17,10 +17,12 @@ if(isset($_REQUEST['x'])){
     $mm = $_REQUEST['mm'];
 //    $sql2 = 'INSERT INTO bsk (playernumber,mx) VALUES (??)';
 
+    $timezone = date_default_timezone_set("Asia/Taipei");
+    $createtime = date("Y-m-d H:i:s");
 
-    $sql = 'INSERT INTO bsk (playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss) VALUES (?,?,?,?,?,?,?,?,?,?)';
+    $sql = 'INSERT INTO bsk (playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss,createtime) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
     $stmt = $PDO->prepare($sql);
-    $stmt->execute([$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm]);
+    $stmt->execute([$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm,$createtime]);
 
 //    echo $mx;
 

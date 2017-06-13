@@ -46,10 +46,46 @@ $_SESSION['gid'] = $gid;
 
 if(isset($_REQUEST['number'])){
 
-
+//azalize  number
     $number = $_REQUEST['number'];
     $test = implode(",",$number);
     $players = $gid.",".$test;
+
+//    //azalize  name
+//    $name = $_REQUEST['name'];
+//    $imdname = implode(",",$name);
+//    $playername = $gid.",".$imdname;
+//
+//    $twid = $_REQUEST['twid'];
+//    $imdtwid = implode(",",$twid);
+//    $playertwid = $gid.",".$imdtwid;
+//
+//    $tel = $_REQUEST['tel'];
+//    $imdtel = implode(",",$tel);
+//    $playertel = $gid.",".$imdtel;
+
+
+//echo $name;
+//echo $imdname;
+//echo $tel[0];
+//    echo $tel[1];
+//    echo '<br>';
+//echo $twid[0];
+//echo '<br>';
+//echo $name[0];
+//for ($i=0;$i<1;$i++){
+//    $pnum = $number[$i];
+//    $pna = $name[$i];
+//    $ptw = $twid[$i];
+//    $ptel = $tel[$i];
+//
+////    echo $pnum;
+//    $sql = "INSERT INTO playermember(gid,playernumber,playername,twid, tel) VALUES ($gid,$pnum,$pna,$ptw,$ptel)";
+//
+//    $PDO->query($sql);
+//}
+
+
 
 //echo "$players<br>";
 
@@ -61,7 +97,7 @@ if(isset($_REQUEST['number'])){
     $stmt = $PDO->prepare($sql);
     $stmt->execute();
 
-    header('Location:homeV4.php');
+    header('Location:homeV5.php');
 
 
 }
@@ -95,10 +131,13 @@ if(isset($_REQUEST['x'])){
     $oy = $_REQUEST['oy'];
     $mm = $_REQUEST['mm'];
 
+    $timezone = date_default_timezone_set("Asia/Taipei");
+    $createtime = date("Y-m-d H:i:s");
 
-    $sql = 'INSERT INTO bsk (gid,playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+
+    $sql = 'INSERT INTO bsk (gid,playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss,createtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
     $stmt = $PDO->prepare($sql);
-    $stmt->execute([$gid,$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm]);
+    $stmt->execute([$gid,$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm,$createtime]);
 
 
 
