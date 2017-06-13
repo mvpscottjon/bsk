@@ -8,7 +8,7 @@ if(isset($_REQUEST['gstatus'])){
     $timezone = date_default_timezone_set("Asia/Taipei");
     $createtime = date("Y-m-d H:i:s");
 
-    echo $createtime;
+//    echo $createtime;
     $sql = 'INSERT INTO bskgame(gstatus,createtime) VALUES (?,?)';
     $stmt = $PDO->prepare($sql);
     $stmt->execute([$gstatus,$createtime]);
