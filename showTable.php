@@ -5,7 +5,7 @@ include 'sqlPdo3.php';
 $PDO= new PDO($dsn,$username,$passwd,$options);
 
 
-$sql = 'SELECT id,gid,playernumber,getx,gety,madeormiss,createtime FROM bsk ORDER BY createtime DESC limit 5';
+$sql = 'SELECT id,gid,playernumber,getx,gety,madeormiss,createtime FROM bsk ORDER BY id DESC limit 5';
 $stmt = $PDO->prepare($sql);
 $rs = $stmt->execute();
 
