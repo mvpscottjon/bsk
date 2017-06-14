@@ -1,10 +1,16 @@
 <?php
 //**********insert X Y
 include 'sqlPdo3.php';
+
+session_start();
+
 $PDO= new PDO($dsn,$username,$passwd,$options);
 
+if ($_SESSION['gid']){
+   $gid = $_SESSION['gid'];
 
-if(isset($_REQUEST['x'])){
+
+if (isset($_REQUEST['x'])) {
     $mx = $_REQUEST['x'];
     $my = $_REQUEST['y'];
     $player = $_REQUEST['p'];
@@ -20,14 +26,43 @@ if(isset($_REQUEST['x'])){
     $timezone = date_default_timezone_set("Asia/Taipei");
     $createtime = date("Y-m-d H:i:s");
 
-    $sql = 'INSERT INTO bsk (playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss,createtime) VALUES (?,?,?,?,?,?,?,?,?,?,?)';
+    $sql = 'INSERT INTO bsk (gid,playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss,createtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
     $stmt = $PDO->prepare($sql);
-    $stmt->execute([$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm,$createtime]);
+    $stmt->execute([$gid,$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm,$createtime]);
 
 //    echo $mx;
 
 
 }
+
+}
+
+///update x y
+//if(isset($_REQUEST['x'])){
+//    $mx = $_REQUEST['x'];
+//    $my = $_REQUEST['y'];
+//    $player = $_REQUEST['p'];
+//    $cx = $_REQUEST['cx'];
+//    $cy = $_REQUEST['cy'];
+//    $sx = $_REQUEST['sx'];
+//    $sy = $_REQUEST['sy'];
+//    $ox = $_REQUEST['ox'];
+//    $oy = $_REQUEST['oy'];
+//    $mm = $_REQUEST['mm'];
+//
+//    $timezone = date_default_timezone_set("Asia/Taipei");
+//    $createtime = date("Y-m-d H:i:s");
+//
+//
+//    $sql = 'INSERT INTO bsk (gid,playernumber,getx,gety,clientx,clienty,screenx,screeny,offsetx,offsety,madeormiss,createtime) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
+//    $stmt = $PDO->prepare($sql);
+//    $stmt->execute([$gid,$player,$mx,$my,$cx,$cy,$sx,$sy,$ox,$oy,$mm,$createtime]);
+//
+//
+//
+//
+//
+//}
 
 
 ?>

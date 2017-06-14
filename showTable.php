@@ -13,6 +13,9 @@ $sql = "SELECT id,gid,playernumber,getx,gety,madeormiss,createtime FROM bsk WHER
 $stmt = $PDO->prepare($sql);
 $rs = $stmt->execute();
 
+
+var_dump($rs);
+
 //$Obj = $stmt->fetchObject();
 
 

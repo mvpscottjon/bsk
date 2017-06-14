@@ -1,5 +1,5 @@
 <?php
-//**********no use
+//**********show player value on select option
 session_start();
 include 'sqlPdo3.php';
 $PDO= new PDO($dsn,$username,$passwd,$options);
@@ -7,7 +7,7 @@ $PDO= new PDO($dsn,$username,$passwd,$options);
 if ($_SESSION['gid'] ){
     $gid = $_SESSION['gid'];
 
-}
+
 
 //$sql = 'SELECT * FROM bskgame ORDER by createtime DESC  limit 1 ';
 //$stmt = $PDO->prepare($sql);
@@ -20,7 +20,7 @@ if ($_SESSION['gid'] ){
 
 
 //gameid = gid
-$sql = "SELECT * FROM playernumber WHERE gid = $gid ORDER by id DESC  limit 10 ";
+$sql = "SELECT * FROM playernumber WHERE gid = $gid ORDER by id DESC  limit 12 ";
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
 
@@ -48,7 +48,7 @@ $json = json_encode($val);
 
 echo $json;
 
-
+}
 
 //
 //while($val = $stmt->fetchObject() ){
@@ -72,3 +72,5 @@ echo $json;
 //}
 //
 //echo "</table>";
+
+

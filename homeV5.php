@@ -119,7 +119,21 @@
                 <select id="CP" class="cs-select cs-skin-rotate" name="option" ">
 
                 </select>
+                <br>
+            <div id="FG">
+<!--            <span >Total Made:<laber id = ttMade></laber></span> <br>-->
+<!--                <span id = ttMiss>Total Miss:</span> <br>-->
+<!--                <span >Total Field Goat:<label id = tFG></label><label>%</label></span> <br>-->
+<!--                <span id = pMade>This player Made:</span> <br>-->
+<!--                <span id = pMiss>This player Miss:</span> <br>-->
+<!--                 <span id = pFG>This Player Field Goat(%):</span> <br>-->
 
+            </div>
+                <script>
+
+
+
+                </script>
         </div>
 <!--        <label class="lb" >play by play</label>-->
          <div id="table" class="col-md-7 col-xs-10">
@@ -236,12 +250,12 @@ function showPlayer() {
 
 //            /選擇球員後可點擊球場紀錄投籃位置
 
-//change player event
+//****change player event and draw old shot
 $("#CP").on('change', function (e) {
     $(".svgImg").remove();
 
     var pOld = $("#CP option:selected").val();
-    var url = "insertPlayer.php?pOld=" + pOld;
+    var url = "drawOld.php?pOld=" + pOld;
 
     $.getJSON(url, function(data){
 
@@ -260,10 +274,19 @@ $("#CP").on('change', function (e) {
             $("#svg").append(cross);
         });
     });
+
+//       setTimeout(getSelect(),1000);
+//                function getSelect() {
+//                    $.get("count.php",{pOld:pOld,url:url});
+//
+//                }
+
 });
 
 
-            ///****取得xy並用window open 送到後端
+
+
+            ///****取得xy並用 送到後端
         shoot();
             function shoot(){
             var delay = 200;
@@ -290,7 +313,7 @@ $("#CP").on('change', function (e) {
 
 
 
-                                $.get("insertPlayer.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
+                                $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
 
 
 
@@ -322,57 +345,13 @@ $("#CP").on('change', function (e) {
                     var mm = 0;
                     var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="30px" height="30px" xlink:href="' + imgPrint + '\"' + 'class = "svgImg"' +'> </image></svg>';
                     $("#svg").append(cross);
-                    $.get("insertPlayer.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
+                    $.get("updateDB.php",{p:p, x:mx ,y: my, cx:cx, cy:cy, sx:sx, sy:sy, ox:ox, oy:oy,mm:mm});
 
                 });
 
         }
 
 
-
-
-
-
-
-            function getAndDraw() {
-                var p = playernum;
-                var cx = event.clientX;
-                var cy = event.clientY;
-                var sx = event.screenX;
-                var sy = event.screenY;
-                var ox = event.offsetX;
-                var oy = event.offsetY;
-
-
-                var mx = ox;
-                var my = oy;
-                var mxR = mx + 5;
-                var mxL = mx - 5;
-                var myR = my + 200;
-                var myL = my - 200;
-               var imgPrint = imageGet;
-
-
-//                依據取得XY 畫圓
-                var circle = '<svg><circle cx=' + '\"' + mx + '\"' + ' ' + 'cy=' + '\"' + my + '\"' + 'r="10" stroke="black" stroke-width="3" fill="black" /></svg>';
-                var crossLine = '<svg><line x1=' + '\"' + mxR + '\"' + ' ' + 'y1="' + my + '\"' + ' ' + 'x2="' + mxL + '\"' + ' ' + 'y2="' + my + '\"' + ' ' + 'style="stroke:rgb(255,0,0);stroke-width:5" /></svg>';
-                var ball = '<svg><image x="200" y="200" width="20px" height="20px" xlink:href="./img/bsk2.png"> </image></svg>';
-                var cross = '<svg><image x="' + mx + '\"' + ' ' + 'y="' + my + ' ' + '" width="20px" height="20px" xlink:href="' + imgPrint + '\"' + '> </image></svg>';
-
-//                $("#svg").append(circle);
-//                $("#svg").append(crossLine);
-                $("#svg").append(cross);
-
-
-//                將參數送到後端與資料庫
-//                $.get("updateDB.php", {p: p, x: mx, y: my, cx: cx, cy: cy, sx: sx, sy: sy, ox: ox, oy: oy}
-//                );
-            }
-
-
-//            $("#court").click(function(event) {
-//
-//        }
 
 
 
@@ -388,8 +367,20 @@ $("#CP").on('change', function (e) {
                     if(status == 'success'){
                         $("#table").html(data);
                     }
-                })
+                });
+                //stastic
+                $.get("count.php", function(data,stasus){
+                    $("#FG").html(data)
+
+                });
+
             }
+//        function stastic() {
+//                $.get("count.php", function(data,stasus){
+//                    $("#ttMade").text(data)
+//
+//                });
+//            }
 
 
         </script>
