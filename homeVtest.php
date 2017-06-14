@@ -30,10 +30,12 @@
           margin: auto;
             margin-top: 0px;
           text-align:center;
-          width: 1200px;
-          height: 600px;
+          /*width: 100%;*/
+          /*height: 50%;*/
           /*border: dotted;*/
           /*float: right;*/
+          max-width: 100%;
+          height: auto;
       }
 
 
@@ -111,7 +113,7 @@
 
 
 <div class="container-fluid"  >
-    <div class="row" style="position: static">
+    <div class="row" style="border: dashed;position: static">
         <div class="col-md-3 col-md-offset-1 col-xs-10  ">
 
                 <label style="font-size: 16px; color: #ac2925" >Choose Player:</label>
@@ -138,11 +140,11 @@
                 <line x1="50%" y1="0" x2="50%" y2="100%" style="stroke:black;stroke-width:3" />
 
                 //half circle 255 48 48
-                <circle cx="50%" cy="50%" r="70" stroke="black" stroke-width="3" fill="rgb(150, 48, 48)" />
+                <circle cx="50%" cy="50%" r="10%" stroke="black" stroke-width="3" fill="rgb(150, 48, 48)" />
 
                 //centeral line
                 <!--                <line x1="0%" y1="50%" x2="100%" y2="50%" style="stroke:red;stroke-width:2" />-->
-                <line x1="600" y1="0" x2="600" y2="600" style="stroke:black;stroke-width:4" />
+<!--                <line x1="50%" y1="0" x2="50%" y2="50%" style="stroke:black;stroke-width:4" />-->
 
                 //three point curve
                 <path d="M80 540 C 550 540, 500 50, 80 50" stroke="black"  stroke-width="3" fill="transparent"/>
@@ -154,7 +156,7 @@
                 <line x1="0" y1="50" x2="80" y2="50" style="stroke:black;stroke-width:3" />
 
                 //power zone
-                <rect x="0" y="220" width="250" height="155" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
+                <rect x="0%" y="35%" width="20%" height="30%" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
 
                 // power zone  line draw
                 <!--                        //up-->
@@ -164,12 +166,15 @@
                 <!--                        /vertical-->
                 <!--                <line x1="250" y1="220" x2="250" y2="375" style="stroke:black;stroke-width:3" />-->
                 //one point line half circle
-                <path d="M250 375 C 375 375, 375 220, 250 220" stroke="black"  stroke-width="3" fill="transparent"/>
+                var x1 = 20%;
+                var x2 =
+
+                <path d="M300 375 C 375 375, 375 220, 250 220" stroke="black"  stroke-width="3" fill="transparent"/>
 
                 ///**********************
                 //power zone oppo
 
-                <rect x="950" y="220" width="250" height="155" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
+                <rect x="80%" y="35%" width="20%" height="30%" style="fill:rgb(150, 48, 48);stroke-width:3;stroke:black" />
 
                 // power zone oppo line draw
                 <!--                        //up-->

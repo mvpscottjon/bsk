@@ -1,11 +1,15 @@
 <?php
 
 include 'sqlPdo3.php';
-
+session_start();
 $PDO= new PDO($dsn,$username,$passwd,$options);
+if(!$_SESSION['gid']) header('Location:./tamplate/index.html');
 
 
-$sql = 'SELECT id,gid,playernumber,getx,gety,madeormiss,createtime FROM bsk ORDER BY id DESC limit 5';
+    $gid = $_SESSION['gid'];
+
+
+$sql = "SELECT id,gid,playernumber,getx,gety,madeormiss,createtime FROM bsk WHERE gid = $gid ORDER BY id DESC limit 5";
 $stmt = $PDO->prepare($sql);
 $rs = $stmt->execute();
 
@@ -17,7 +21,7 @@ $rs = $stmt->execute();
 //var_dump($Obj);
 //echo "<div>";
 //echo '<label style=" text-align: center">play by play</label>';
-echo '<lable style="font-size: 16px;  float: inherit; color: #ac2925">Play by Play:</lable>';
+echo '<lable style="font-size: 16px;   color: #ac2925">Play by Play:</lable>';
         echo '<table >';
             echo '<tr >';
             echo    "<th>Id</th>";
@@ -49,7 +53,6 @@ echo '<lable style="font-size: 16px;  float: inherit; color: #ac2925">Play by Pl
 
         }
         echo '</table>';
-
 //echo "<div>";
 
 ?>

@@ -30,74 +30,14 @@
           margin: auto;
             margin-top: 0px;
           text-align:center;
-          width: 1200px;
-          height: 600px;
+          width: auto;
+          height: 300px;
           /*border: dotted;*/
           /*float: right;*/
       }
 
 
 
-        /*.lb{*/
-            /*position: relative;*/
-            /*margin-top: 0px;*/
-            /*!*float: left;*!*/
-        /*}*/
-        /*.chs{*/
-            /*position: relative;*/
-            /*margin-top: 0px;*/
-            /*float: left;*/
-            /*!*width: 100%;*!*/
-            /*border: dashed;*/
-        /*}*/
-
-        .container-fluid{
-            /*border: dashed;*/
-
-        }
-
-
-
-        .col-md-3{
-            position: relative;
-            /*border: solid;*/
-            /*height: auto;*/
-            /*margin: 0px 0px 0px 170px;*/
-            /*padding-top: 50px;*/
-            width: 30%;
-            /*float: left;*/
-        }
-
-        .col-md-7{
-            /*border: double;*/
-            /*width: 500px;*/
-            /*float: right;*/
-            height: auto;
-            margin: 0px 200px 0px 0px;
-            width:40%;
-            float: right;
-        }
-
-        table{
-            position: relative;
-            width: 100%;
-            height: 120px;
-            border: solid;
-            /*margin: 15px 0 0 30px;*/
-            font-size: large;
-            text-align: center;
-            /*float: right;*/
-
-        }
-
-
-
-        table, th, td {
-            border: 1px solid black;
-            color: black;
-            background-color: whitesmoke;
-            text-align: center
-        }
 
 
     </style>
@@ -110,26 +50,9 @@
 
 
 
-<div class="container-fluid"  >
-    <div class="row" style="position: static">
-        <div class="col-md-3 col-md-offset-1 col-xs-10  ">
 
-                <label style="font-size: 16px; color: #ac2925" >Choose Player:</label>
-<!--                <br>-->
-                <select id="CP" class="cs-select cs-skin-rotate" name="option" ">
-
-                </select>
-
-        </div>
-<!--        <label class="lb" >play by play</label>-->
-         <div id="table" class="col-md-7 col-xs-10">
-
-        </div>
-    </div>
-
-    <div class="row" >
         <div id="court" class="court " >
-            <svg width="100%" height="100%" id="svg" class="svg">
+            <svg  id="svg" class="svg" viewBox="5 0 1200 600">>
 
                 //bord line 255 215 0
                 <rect width="100%" height="100%" style="fill:rgb(255, 240, 120);stroke-width:3;stroke:rgb(0,0,0)" id="rect"/>
@@ -194,14 +117,9 @@
             </svg>
         </div>
 
-    </div>
 
-</div>
     <!--**********SVG-->
-<div id="divbutton" style="text-align:center;">
-    <button type="button" class="btn btn-danger"><a href="./template/index.html">Leave</a></button>
 
-</div>
 
 
 

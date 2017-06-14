@@ -32,11 +32,11 @@ form   {
     border-radius: 12px;
     margin:0px;
     position: relative;
-    padding: 50px;
+    padding: 10px;
 
     max-width: 100%;
 
-    float: left;
+    /*float: left;*/
     background-color: white;
 }
 
@@ -61,7 +61,7 @@ form > div {
 
      #divbutton{
          float: none;
-        margin: 30px;
+        margin: 10px;
      }
 
     </style>
