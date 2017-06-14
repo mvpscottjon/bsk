@@ -12,14 +12,14 @@ if (isset($_REQUEST['pOld'])){
 
 }
 
-
+$fg = 0 ;
 
 
 $PDO= new PDO($dsn,$username,$passwd,$options);
 
 
 $sql1 = "SELECT COUNT(madeormiss) FROM bsk WHERE gid = $gid AND madeormiss='1'";
-$sql2 = "SELECT COUNT(madeormiss) FROM bsk WHERE madeormiss='0'";
+$sql2 = "SELECT COUNT(madeormiss) FROM bsk WHERE gid = $gid AND madeormiss='0'";
 
 $stmt = $PDO->prepare($sql1);
  $stmt->execute();
@@ -31,7 +31,7 @@ $obj1 = $stmt->fetchColumn();
 
     $obj2 = $stmt->fetchColumn();
 
-    $fg =round(($obj1)/($obj1+$obj2) * (100) );
+    @$fg =round(($obj1)/($obj1+$obj2) * (100) );
 
 
 //echo $fg;
