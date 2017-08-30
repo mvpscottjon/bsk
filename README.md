@@ -1,7 +1,9 @@
 <h1>籃球投籃統計圖
 <br>
-<h2>首頁
-！［image](https://github.com/mvpscottjon/bsk/blob/master/%E9%A6%96%E9%A0%81.png?raw=true)
+<h2>首頁<br>
+![image](https://github.com/mvpscottjon/bsk/blob/master/%E9%A6%96%E9%A0%81.png?raw=true)
+![image](https://github.com/mvpscottjon/bsk/blob/master/%E9%A6%96%E9%A0%81.png?raw=true)
+
 
 <br><br><br><br><br><br>
 <h2>輸入球員資料
