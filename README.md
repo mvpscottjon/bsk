@@ -13,4 +13,4 @@
 ![image](https://github.com/mvpscottjon/bsk/blob/master/%E6%8A%95%E7%B1%83%E7%B5%B1%E8%A8%88.jpg?raw=true)
 
 
-![image](https://tse4.mm.bing.net/th?id=OIP.tX-KRebMVgXxwUSiYD6xUAFZC0&pid=15.1&P=0&w=326&h=171)
+![image](https://github.com/mvpscottjon/bsk/blob/master/%E6%8A%95%E7%B1%83%E7%B5%B1%E8%A8%88.jpg?raw=true)
