@@ -1,4 +1,4 @@
-<h1>籃球投籃統計圖
+<h1>籃球投籃分布圖
 <br>
 
 <h2>採用JavaScript、jQuery、PHP、MySQL網頁式開發，可記錄球員投籃狀態分布圖</h2>
